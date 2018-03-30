@@ -1,2 +1,0 @@
-# xavierbourretsicotte.github.io
-Blog

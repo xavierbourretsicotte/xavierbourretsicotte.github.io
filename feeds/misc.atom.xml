@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Xavier Bourret Sicotte's Data Blog - misc</title><link href="/" rel="alternate"></link><link href="/feeds/misc.atom.xml" rel="self"></link><id>/</id><updated>2017-11-27T12:30:00+01:00</updated><entry><title>My first post</title><link href="/My-first-post.html" rel="alternate"></link><published>2017-11-26T10:01:00+01:00</published><updated>2017-11-27T12:30:00+01:00</updated><author><name>Your name</name></author><id>tag:None,2017-11-26:/My-first-post.html</id><summary type="html">&lt;p&gt;What does your post talk about? Write here.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the &lt;em&gt;first post&lt;/em&gt; from my Pelican blog. &lt;strong&gt;YAY!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;!This is the description of the first image
+({firstpost}/images/PCA_IRIS.png)&lt;/p&gt;</content><category term="first"></category><category term="misc"></category></entry></feed>
