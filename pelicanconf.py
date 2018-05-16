@@ -16,9 +16,9 @@ def system_path(path):
 ########################### General Settings ###################################
 
 
-AUTHOR = u'Xavier Bourret Sicotte'
-SITENAME = u"Xavier 's Data Blog"
-SITESUBTITLE = u"A blog dedicated to data, mathematics and good looking graphs"
+AUTHOR = 'Xavier Bourret Sicotte'
+SITENAME = 'Data Blog'
+SITESUBTITLE = u'Data Science, Machine Learning and Statistics'
 SITEURL = ''
 
 PATH = 'content'
@@ -53,21 +53,35 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
+ENABLE_MATHJAX = True
 
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['images', 'figures', 'downloads']
+
+ABOUT_PAGE = '/pages/about.html'
+TWITTER_USERNAME = ''
+GITHUB_USERNAME = 'xavierbourretsicotte'
+STACKOVERFLOW_ADDRESS = 'https://stats.stackexchange.com/users/192854/xavier-maxime'
+AUTHOR_BLOG = 'http://xavierbourretsicotte.github.io/'
+AUTHOR_CV = ""
+SHOW_ARCHIVES = True
+SHOW_FEED = False  # Need to address large feeds
 
 
+# for liquid tags
+#CODE_DIR = 'downloads/code'
+NOTEBOOK_DIR = 'downloads/notebooks'
 
 #Theme
 MARKUP = ('md',)
 
 PLUGIN_PATHS = ['./plugins']
 
-PLUGINS = ['ipynb.liquid','i18n_subsites']
+PLUGINS = ['ipynb.liquid','i18n_subsites','render_math']
 
-THEME = 'pelican-themes/pelican-bootstrap3'
-JINJA_ENVIRONMENT = {
-    'extensions': ['jinja2.ext.i18n'],
-}
+THEME = 'pelican-themes/aboutwilson'
+
+JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
+
+
 
 

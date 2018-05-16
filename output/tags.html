@@ -1,180 +1,125 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<html lang="en">
 <head>
-    <title>Tags - Xavier 's Data Blog</title>
-    <!-- Using the latest rendering mode for IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title>Tags — Data Blog</title>
+	<meta name="description" content="The Tags page lists all tags used to classify the posts. Each post has at least one tag helping readers find out easily what they are looking for.">
+	<meta name="author" content="Xavier Bourret Sicotte">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+		<![endif]-->
+	<link href="/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/css/local.css" rel="stylesheet">
+	<link href="/theme/css/pygments.css" rel="stylesheet">
+<style type="text/css" media="screen">
+ul.tagcloud {
+	list-style: none;
+	padding: 0;
+	padding-top: 7em;
+	padding-bottom: 7em;
+	width: 50%;
+	margin-left: 25%;
+}
 
+ul.tagcloud li {
+	display: inline-block;
+}
 
+li.tag-1 {
+	font-size: 150%;
+}
 
+li.tag-2 {
+	font-size: 120%;
+}
 
-        <meta name="author" content="Xavier Bourret Sicotte" />
+li.tag-3 {
+	font-size: 100%;
+}
 
-    <!-- Open Graph tags -->
-        <meta property="og:site_name" content="Xavier 's Data Blog" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Xavier 's Data Blog"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:description" content="Xavier 's Data Blog"/>
-
-
-
-    <!-- Bootstrap -->
-        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
-    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
-
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
-    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
-
-
-
-
-
+li.tag-4 {
+	font-size: 80%;
+}
+</style>
 </head>
 <body>
-
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="/" class="navbar-brand">
-Xavier 's Data Blog            </a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                        <li >
-                            <a href="/category/maths.html">Maths</a>
-                        </li>
-                        <li >
-                            <a href="/category/misc.html">Misc</a>
-                        </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-</div> <!-- /.navbar -->
-<!-- Banner -->
-<!-- End Banner -->
 <div class="container">
-    <div class="row">
-        <div class="col-sm-9">
-    <section id="tags">
-        <h1>Tags for Xavier 's Data Blog</h1>
-        <div class="panel-group" id="accordion">            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-first">first <span class="badge pull-right">1</span></a>
-                    </h4>
-                </div>
-                <div id="collapse-first" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <p><span class="categories-timestamp"><time datetime="2017-11-26T10:01:00+01:00">Sun 26 November 2017</time></span> <a href="/My-first-post.html">My first post</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-maths">Maths <span class="badge pull-right">1</span></a>
-                    </h4>
-                </div>
-                <div id="collapse-maths" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <p><span class="categories-timestamp"><time datetime="2018-03-29T00:00:00+02:00">Thu 29 March 2018</time></span> <a href="/Intro_stats.html">Introduction to statistics</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-misc">misc <span class="badge pull-right">1</span></a>
-                    </h4>
-                </div>
-                <div id="collapse-misc" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <p><span class="categories-timestamp"><time datetime="2017-11-26T10:01:00+01:00">Sun 26 November 2017</time></span> <a href="/My-first-post.html">My first post</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-statistics">Statistics <span class="badge pull-right">1</span></a>
-                    </h4>
-                </div>
-                <div id="collapse-statistics" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <p><span class="categories-timestamp"><time datetime="2018-03-29T00:00:00+02:00">Thu 29 March 2018</time></span> <a href="/Intro_stats.html">Introduction to statistics</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-        </div>
-        <div class="col-sm-3" id="sidebar">
-            <aside>
-<!-- Sidebar -->
-<section class="well well-sm">
-  <ul class="list-group list-group-flush">
-
-<!-- Sidebar/Social -->
-<li class="list-group-item">
-  <h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
-  <ul class="list-group" id="social">
-    <li class="list-group-item"><a href="https://github.com/xavierbourretsicotte"><i class="fa fa-github-square fa-lg"></i> github</a></li>
-    <li class="list-group-item"><a href="https://www.linkedin.com/in/xavier-bourret-sicotte/"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
-  </ul>
-</li>
-<!-- End Sidebar/Social -->
-
-<!-- Sidebar/Links -->
-<li class="list-group-item">
-  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
-  <ul class="list-group" id="links">
-    <li class="list-group-item">
-      <a href="http://www.cnam.fr/portail/conservatoire-national-des-arts-et-metiers-821166.kjsp" target="_blank">Centre National des Arts et Metiers</a>
-    </li>
-  </ul>
-</li>
-<!-- End Sidebar/Links -->
-  </ul>
-</section>
-<!-- End Sidebar -->            </aside>
-        </div>
-    </div>
+	<div class="page-header">
+		<h1><a href="/">Data Blog</a>
+			<br><small>Data Science, Machine Learning and Statistics</small></h1>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<h1>Tags</h1>
+<div class="text-center">
+<ul class="tagcloud">
+</ul>
 </div>
-<footer>
-   <div class="container">
-      <hr>
-      <div class="row">
-         <div class="col-xs-10">&copy; 2018 Xavier Bourret Sicotte
-            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
-            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
-            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
-         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
-      </div>
-   </div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="">Data Blog</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://github.com/xavierbourretsicotte">github</a></li>
+							<li><a href="https://www.linkedin.com/in/xavier-bourret-sicotte/">linkedin</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="/category/statistics.html">Statistics (2)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://www.cnam.fr/portail/conservatoire-national-des-arts-et-metiers-821166.kjsp">Centre National des Arts et Metiers</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </footer>
-<script src="/theme/js/jquery.min.js"></script>
-
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/theme/js/bootstrap.min.js"></script>
-
-<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="/theme/js/respond.min.js"></script>
-
-
-
-
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Xavier Bourret Sicotte 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
 </body>
 </html>
