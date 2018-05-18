@@ -48,6 +48,8 @@ SOCIAL = (('github', 'https://github.com/xavierbourretsicotte'),
           ('linkedin', 'https://www.linkedin.com/in/xavier-bourret-sicotte/'),
           )
 
+GOOGLE_ANALYTICS = "UA-119498351-1"
+
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
