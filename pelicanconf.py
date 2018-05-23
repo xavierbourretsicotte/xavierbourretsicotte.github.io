@@ -48,9 +48,9 @@ SOCIAL = (('github', 'https://github.com/xavierbourretsicotte'),
           ('linkedin', 'https://www.linkedin.com/in/xavier-bourret-sicotte/'),
           )
 
-GOOGLE_ANALYTICS = "UA-119498351-1"
+GOOGLE_ANALYTICS = 'UA-119498351-1'
 
-DISQUS_SITENAME = "xavierbourretsicotte-github-io"
+DISQUS_SITENAME = 'xavierbourretsicotte-github-io'
 
 DEFAULT_PAGINATION = 10
 
