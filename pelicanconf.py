@@ -50,7 +50,7 @@ SOCIAL = (('github', 'https://github.com/xavierbourretsicotte'),
 
 GOOGLE_ANALYTICS = "UA-119498351-1"
 
-DISQUS_SITENAME = "xavierbourretsicotte.github.io"
+DISQUS_SITENAME = "xavierbourretsicotte-github-io"
 
 DEFAULT_PAGINATION = 10
 
