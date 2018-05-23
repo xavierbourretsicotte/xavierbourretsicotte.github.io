@@ -4,7 +4,7 @@ Comments: true
 Slug: stats_inference_2
 Category: Statistics
 Tags: statistics, regression
-Summary: statistical inference on multiple linear regression in Python using Numpy, Statsmodel and Sklearn. Implementation of model selection, study of multicolinearity and residuals analysis.
+Summary: Statistical inference on multiple linear regression in Python using Numpy, Statsmodel and Sklearn. Implementation of model selection, study of multicolinearity and residuals analysis.
 Cover: /images/cover_mult_lin_reg.png
 Author: Xavier Bourret Sicotte
 
