@@ -1024,17 +1024,25 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Inferential-Statistics---Multiple-Linear-Regression">Inferential Statistics - Multiple Linear Regression<a class="anchor-link" href="#Inferential-Statistics---Multiple-Linear-Regression">¶</a></h1><p>This notebook builds upon the <a href="https://xavierbourretsicotte.github.io/stats_inference_1.html">first</a> notebook in the series and explores various implementations of <em>statistical inferences</em> on a <strong>multiple linear regression model. </strong></p>
-<p>Again, as the derivations of the model and the associated statistics have been covered in numerous books, lectures and notebooks (see sources) we will focus instead on a case study and its Python implementation using three main libraries.</p>
+<p><h1>Table of Contents<span class="tocSkip"></span></h1></p>
+<div class="toc"><ul class="toc-item"><li><span><a data-toc-modified-id="Introduction:-Inferential-Statistics---Multiple-Linear-Regression-1" href="#Introduction:-Inferential-Statistics---Multiple-Linear-Regression"><span class="toc-item-num">1  </span>Introduction: Inferential Statistics - Multiple Linear Regression</a></span><ul class="toc-item"><li><span><a data-toc-modified-id="Dataset-1.1" href="#Dataset"><span class="toc-item-num">1.1  </span>Dataset</a></span></li><li><span><a data-toc-modified-id="Notation-in-matrix-form-1.2" href="#Notation-in-matrix-form"><span class="toc-item-num">1.2  </span>Notation in matrix form</a></span></li><li><span><a data-toc-modified-id="Statistical-Model---Normally-distributed-errors-1.3" href="#Statistical-Model---Normally-distributed-errors"><span class="toc-item-num">1.3  </span>Statistical Model - Normally distributed errors</a></span></li><li><span><a data-toc-modified-id="Test-statistics-and-hypothesis-testing-1.4" href="#Test-statistics-and-hypothesis-testing"><span class="toc-item-num">1.4  </span>Test statistics and hypothesis testing</a></span></li></ul></li><li><span><a data-toc-modified-id="Statistical-Inference:-Implementation-using-Numpy--and-Pandas-2" href="#Statistical-Inference:-Implementation-using-Numpy--and-Pandas"><span class="toc-item-num">2  </span>Statistical Inference: Implementation using Numpy  and Pandas</a></span><ul class="toc-item"><li><span><a data-toc-modified-id="Custom-Python-class-2.1" href="#Custom-Python-class"><span class="toc-item-num">2.1  </span>Custom Python class</a></span></li></ul></li><li><span><a data-toc-modified-id="Stability-of-the-coefficients-and-multicolinearity-3" href="#Stability-of-the-coefficients-and-multicolinearity"><span class="toc-item-num">3  </span>Stability of the coefficients and multicolinearity</a></span><ul class="toc-item"><li><span><a data-toc-modified-id="Calculating-the-colinearity-diagnostic-using-Numpy-3.1" href="#Calculating-the-colinearity-diagnostic-using-Numpy"><span class="toc-item-num">3.1  </span>Calculating the colinearity diagnostic using Numpy</a></span></li><li><span><a data-toc-modified-id="Print-results-in-a-format-similar-to-SAS-outputs-3.2" href="#Print-results-in-a-format-similar-to-SAS-outputs"><span class="toc-item-num">3.2  </span>Print results in a format similar to SAS outputs</a></span></li></ul></li><li><span><a data-toc-modified-id="Model-Selection-4" href="#Model-Selection"><span class="toc-item-num">4  </span>Model Selection</a></span><ul class="toc-item"><li><span><a data-toc-modified-id="Implementation-of-model-selection-in-Python-(to-be-completed)-4.1" href="#Implementation-of-model-selection-in-Python-(to-be-completed)"><span class="toc-item-num">4.1  </span>Implementation of model selection in Python (to be completed)</a></span></li></ul></li><li><span><a data-toc-modified-id="Implementation-of-Multiple-Linear-Regression-using-Statsmodel-5" href="#Implementation-of-Multiple-Linear-Regression-using-Statsmodel"><span class="toc-item-num">5  </span>Implementation of Multiple Linear Regression using Statsmodel</a></span></li></ul></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Introduction:-Inferential-Statistics---Multiple-Linear-Regression">Introduction: Inferential Statistics - Multiple Linear Regression<a class="anchor-link" href="#Introduction:-Inferential-Statistics---Multiple-Linear-Regression">¶</a></h1><p>This notebook builds upon the <a href="https://xavierbourretsicotte.github.io/stats_inference_1.html">first</a> notebook in the series and explores various implementations of <em>statistical inferences</em> on a <strong>multiple linear regression model. </strong></p>
 <p>The notebook is divided into the following main sections:</p>
 <ol>
 <li>Introduction: notation, model description, formula, hypothesis</li>
 <li>Inferential statistics: Implementation using Numpy and Pandas</li>
 <li>Stability of the regression coefficients: multicolinearity, tolerance and VIF</li>
+<li>Model Selection</li>
 <li>Implementation using Statsmodel</li>
-<li>Implementation using Scikit Learn</li>
 </ol>
-<h1 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction">¶</a></h1><h3 id="Libraries">Libraries<a class="anchor-link" href="#Libraries">¶</a></h3>
+<h3 id="Libraries">Libraries<a class="anchor-link" href="#Libraries">¶</a></h3>
 </div>
 </div>
 </div>
@@ -1062,7 +1070,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Dataset">Dataset<a class="anchor-link" href="#Dataset">¶</a></h3><p>The dataset is used to predict electricity consumption of housing units equipped with electrical heating, given data (variables) on the housing units.</p>
+<h2 id="Dataset">Dataset<a class="anchor-link" href="#Dataset">¶</a></h2><p>The dataset is used to predict electricity consumption of housing units equipped with electrical heating, given data (variables) on the housing units.</p>
 <p>There are $P = 6$ explanatory (or independent, exogeneous) variables $x_1, x_2,...x_p$ which are stored in the matrix $\mathbf{X}$:</p>
 <ul>
 <li>SURFACE: surface area of the housing unit in $m^2$</li>
@@ -1107,7 +1115,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Notation-in-matrix-form">Notation in matrix form<a class="anchor-link" href="#Notation-in-matrix-form">¶</a></h3><p>As the problem involves multiple variables, notation is simplified by using matrices. The following convention is used:</p>
+<h2 id="Notation-in-matrix-form">Notation in matrix form<a class="anchor-link" href="#Notation-in-matrix-form">¶</a></h2><p>As the problem involves multiple variables, notation is simplified by using matrices. The following convention is used:</p>
 <ul>
 <li>$x_p$: sub-script $p$ is used to indicate the variable number. E.g. $x_1$ corresponds to SURFACE</li>
 <li>$x_i$ sub-script $i$ indicates the observation number</li>
@@ -1303,13 +1311,13 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2.-Statistical-Inference:-Implementation-using-Numpy--and-Pandas">2. Statistical Inference: Implementation using Numpy  and Pandas<a class="anchor-link" href="#2.-Statistical-Inference:-Implementation-using-Numpy--and-Pandas">¶</a></h1><h2 id="2.1-Custom-Python-class">2.1 Custom Python class<a class="anchor-link" href="#2.1-Custom-Python-class">¶</a></h2><p><em>Note that Statsmodel is used for probability calculations</em></p>
+<h1 id="Statistical-Inference:-Implementation-using-Numpy--and-Pandas">Statistical Inference: Implementation using Numpy  and Pandas<a class="anchor-link" href="#Statistical-Inference:-Implementation-using-Numpy--and-Pandas">¶</a></h1><h2 id="Custom-Python-class">Custom Python class<a class="anchor-link" href="#Custom-Python-class">¶</a></h2><p><em>Note that Statsmodel is used for probability calculations</em></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [247]:</div>
+<div class="prompt input_prompt">In [277]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">multiple_linear_reg_model</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -1378,9 +1386,95 @@ h6:hover .anchor-link {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Stability-of-the-coefficients-and-multicolinearity">Stability of the coefficients and multicolinearity<a class="anchor-link" href="#Stability-of-the-coefficients-and-multicolinearity">¶</a></h1><p>The standard deviation of $b_j$ is a good indicator of the stability of the estimation of the coefficients of regression.</p>
+<p>Since $var \mathbf{(B) = \sigma^2(X'X)^{-1}}$, if the dependent variables $x_1,...,x_p$ are highly correlated, then the determinant of $\mathbf{X'X}$ will be close to zero and the inverse will have very high values on its main diagonal. It appears that a main source of instability in the estimation of $\beta_p$ is therefore the <em>multicolinearity</em> of the dependent variables.</p>
+<h3 id="Tolerance-and-VIF">Tolerance and VIF<a class="anchor-link" href="#Tolerance-and-VIF">¶</a></h3><p>Two measures of multicolinearity between variables are the <em>tolerance</em> and <em>Variance Influence Factor (VIF)</em>.</p>
+<ul>
+<li>$Tol(x_p) = 1 - R^2_p$</li>
+<li>$VIF(x_p) = \large \frac{1}{Tol(x_p)} = \frac{1}{1 - R^2_p}$</li>
+<li>$R^2_p$ is the coefficient of determination (i.e. the R-squared) of the linear regression of $x_p$ on all the other predictors. </li>
+</ul>
+<p>In effect, this means running a regression model with $x_p$ as the independent variable and all other $x_1,...,x_{p-1}$ dependent variables as predictors. If $x_p$ is orthogonal to all other variables (i.e. covariance is zero) then $VIF(x_p) = 1$</p>
+<p>It can be shown that the variance of a coefficient is a function of the VIF, namely:</p>
+<p>$\hat \beta_{B_p} = \large \frac{\hat \sigma^2}{\sum_{i=1}^n (x_{ip} - \bar x_p)^2} \small \times VIF(x_p)$</p>
+<p>Values where $Tol &lt; .5$ and $VIF &gt; 2$ are to be investigated for multicolinearity</p>
+<h3 id="Eigenvalues,-Condition-Index-and-Condition-Number">Eigenvalues, Condition Index and Condition Number<a class="anchor-link" href="#Eigenvalues,-Condition-Index-and-Condition-Number">¶</a></h3><p>Other measures of multicolinearity are provided by the correlation matrix of the dependent variables. The correlation matrix is found by normalizing the matrix $\mathbf{X}$ and then computing $\mathbf{X'X}$.</p>
+<ul>
+<li><strong>Eigenvalues of the correlation matrix:</strong> each eigenvalue is linked to the correlation of a variable with the others. Printing the eigenvalues from largest to smallest helps visualize colinearity. In particular, eigenvalues close to zero point towards linear dependence. A value of 0 indicates perfect linear dependence, and therefore perfect colinearity</li>
+<li><strong>Condition Index </strong>: the square root of the ratio between the largest eigenvalue and the eigenvalue associated to each variable. The condition index is equal to 1 if variables are perfectly independent, a large value &gt; 30 highlights a collinearity issue. </li>
+</ul>
+<h3 id="What-to-do-in-cases-of-multicolinearity">What to do in cases of multicolinearity<a class="anchor-link" href="#What-to-do-in-cases-of-multicolinearity">¶</a></h3><ul>
+<li>Increase the sample size</li>
+<li>Select a subset of dependent variables </li>
+<li>Perform Principal Component Analysis and then regression on the result</li>
+<li>Ridge regression</li>
+<li>PLS regression</li>
+<li>LASSO regression</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Calculating-the-colinearity-diagnostic-using-Numpy">Calculating the colinearity diagnostic using Numpy<a class="anchor-link" href="#Calculating-the-colinearity-diagnostic-using-Numpy">¶</a></h2><h3 id="Tolerance-and-VIF-using-the-class-defined-previously">Tolerance and VIF using the class defined previously<a class="anchor-link" href="#Tolerance-and-VIF-using-the-class-defined-previously">¶</a></h3><p>For each variable in the dataset (i.e. colunm p in matrix X), run the regression model with column p as the y-variable, and the remaining variables as the dependent predictors. For each regression model, calculate the R2 value and the associated tol / VIF. Ingore the columns of 1s which is only for the y-intercept</p>
+<h3 id="Condition-index">Condition index<a class="anchor-link" href="#Condition-index">¶</a></h3><p>Use Numpy's built-in correlation coefficient function to calculate the correlation matrix. Compute the eigenvalues, sort them and calculate their ratio. <em>Note: not used in the printed result table</em></p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [248]:</div>
+<div class="prompt input_prompt">In [367]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">colinearity_diagnostic</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="sd">'''Calculate the VIF, Tol and condition number for each variable in the dataset X, </span>
+<span class="sd">    Note that the first column of X is assumed to be a column of 1s and is ignored</span>
+<span class="sd">    These are measures of multicolinearity'''</span>
+    <span class="c1">#Initialize arrays: does not apply to the 1st variable (intercept)</span>
+    <span class="n">VIF</span> <span class="o">=</span> <span class="p">[</span><span class="s1">''</span><span class="p">]</span>
+    <span class="n">Tol</span> <span class="o">=</span> <span class="p">[</span><span class="s1">''</span><span class="p">]</span>
+    <span class="n">Eig</span> <span class="o">=</span> <span class="p">[</span><span class="s1">''</span><span class="p">]</span>
+    <span class="n">Cond_Index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">''</span><span class="p">]</span>
+    
+    <span class="c1">#VIF and TOL: Loop through each variable of the X data matrix</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="n">tmp_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">tmp_y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="n">p</span><span class="p">]</span>
+        <span class="n">tmp_model</span> <span class="o">=</span> <span class="n">multiple_linear_reg_model</span><span class="p">(</span><span class="n">tmp_X</span><span class="p">,</span><span class="n">tmp_y</span><span class="p">)</span>
+        <span class="n">tmp_model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+        <span class="n">VIF</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">tmp_model</span><span class="o">.</span><span class="n">R2</span><span class="p">))</span>
+        <span class="n">Tol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">tmp_model</span><span class="o">.</span><span class="n">R2</span><span class="p">)</span>
+    
+    
+    <span class="c1">#Eigenvalues and Condition Index. Rowvar parameter for column variables</span>
+    <span class="c1">#Not used in the result</span>
+    <span class="n">corr_matrix_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:],</span> <span class="n">rowvar</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">Eig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">corr_matrix_X</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">Cond_Index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">Eig</span><span class="p">)</span> <span class="o">/</span> <span class="n">Eig</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">VIF</span><span class="p">,</span><span class="n">Tol</span><span class="p">,</span><span class="n">Eig</span><span class="p">,</span><span class="n">Cond_Index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Print-results-in-a-format-similar-to-SAS-outputs">Print results in a format similar to SAS outputs<a class="anchor-link" href="#Print-results-in-a-format-similar-to-SAS-outputs">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [370]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_results</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
@@ -1402,8 +1496,8 @@ h6:hover .anchor-link {
     
     <span class="nb">print</span><span class="p">(</span><span class="s1">'Parameter Estimates'</span><span class="p">)</span>
     
-    <span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'1. Parameter Estimate'</span><span class="p">:</span><span class="n">model</span><span class="o">.</span><span class="n">b</span><span class="p">,</span><span class="s1">'2. Standard Error'</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">S_b</span><span class="p">,</span><span class="s1">'3. t Value'</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">b_t_values</span><span class="p">,</span> <span class="s1">'4. Pr &gt; |t|'</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">b_t_p_values</span>  <span class="p">},</span> 
-                       <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'intercept'</span><span class="p">,</span><span class="s1">'SURFACE'</span><span class="p">,</span><span class="s1">'PERS'</span><span class="p">,</span><span class="s1">'PAVILLON'</span><span class="p">,</span><span class="s1">'AGE'</span><span class="p">,</span><span class="s1">'VOL'</span><span class="p">,</span><span class="s1">'SBAINS'</span><span class="p">])</span>
+    <span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'1. Parameter Estimate'</span><span class="p">:</span><span class="n">model</span><span class="o">.</span><span class="n">b</span><span class="p">,</span><span class="s1">'2. Standard Error'</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">S_b</span><span class="p">,</span><span class="s1">'3. t Value'</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">b_t_values</span><span class="p">,</span> <span class="s1">'4. Pr &gt; |t|'</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">b_t_p_values</span><span class="p">,</span>
+                              <span class="s1">'5. Tolerance'</span><span class="p">:</span> <span class="n">colinearity_diagnostic</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">X</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'6. VIF'</span><span class="p">:</span> <span class="n">colinearity_diagnostic</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">X</span><span class="p">)[</span><span class="mi">0</span><span class="p">]},</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'intercept'</span><span class="p">,</span><span class="s1">'SURFACE'</span><span class="p">,</span><span class="s1">'PERS'</span><span class="p">,</span><span class="s1">'PAVILLON'</span><span class="p">,</span><span class="s1">'AGE'</span><span class="p">,</span><span class="s1">'VOL'</span><span class="p">,</span><span class="s1">'SBAINS'</span><span class="p">])</span>
         
     <span class="n">display</span><span class="p">(</span><span class="n">df3</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 
@@ -1560,6 +1654,8 @@ h6:hover .anchor-link {
 <th>2. Standard Error</th>
 <th>3. t Value</th>
 <th>4. Pr &gt; |t|</th>
+<th>5. Tolerance</th>
+<th>6. VIF</th>
 </tr>
 </thead>
 <tbody>
@@ -1569,6 +1665,8 @@ h6:hover .anchor-link {
 <td>1344.210</td>
 <td>-0.168</td>
 <td>0.869</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <th>SURFACE</th>
@@ -1576,6 +1674,8 @@ h6:hover .anchor-link {
 <td>54.305</td>
 <td>0.521</td>
 <td>0.613</td>
+<td>0.00314466</td>
+<td>318</td>
 </tr>
 <tr>
 <th>PERS</th>
@@ -1583,6 +1683,8 @@ h6:hover .anchor-link {
 <td>229.229</td>
 <td>-1.990</td>
 <td>0.072</td>
+<td>0.134088</td>
+<td>7.4578</td>
 </tr>
 <tr>
 <th>PAVILLON</th>
@@ -1590,6 +1692,8 @@ h6:hover .anchor-link {
 <td>276.274</td>
 <td>2.157</td>
 <td>0.054</td>
+<td>0.46732</td>
+<td>2.13986</td>
 </tr>
 <tr>
 <th>AGE</th>
@@ -1597,6 +1701,8 @@ h6:hover .anchor-link {
 <td>27.067</td>
 <td>0.311</td>
 <td>0.762</td>
+<td>0.0262314</td>
+<td>38.1223</td>
 </tr>
 <tr>
 <th>VOL</th>
@@ -1604,6 +1710,8 @@ h6:hover .anchor-link {
 <td>20.086</td>
 <td>0.225</td>
 <td>0.826</td>
+<td>0.0019833</td>
+<td>504.211</td>
 </tr>
 <tr>
 <th>SBAINS</th>
@@ -1611,6 +1719,8 @@ h6:hover .anchor-link {
 <td>219.732</td>
 <td>-0.357</td>
 <td>0.728</td>
+<td>0.523022</td>
+<td>1.91197</td>
 </tr>
 </tbody>
 </table>
@@ -1624,26 +1734,33 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3.-Stability-of-the-coefficients:-multicolinearity,-tolerance-and-VIF">3. Stability of the coefficients: multicolinearity, tolerance and VIF<a class="anchor-link" href="#3.-Stability-of-the-coefficients:-multicolinearity,-tolerance-and-VIF">¶</a></h1><p>The standard deviation of $b_j$ is a good indicator of the stability of the estimation of the coefficients of regression.</p>
-<p>Since $var \mathbf{(B) = \sigma^2(X'X)^{-1}}$, if the dependent variables $x_1,...,x_p$ are highly correlated, then the determinant of $\mathbf{X'X}$ will be close to zero and the inverse will have very high values on its main diagonal. It appears that a main source of instability in the estimation of $\beta_p$ is therefore the <em>multicolinearity</em> of the dependent variables.</p>
-<h3 id="Tolerance-and-VIF">Tolerance and VIF<a class="anchor-link" href="#Tolerance-and-VIF">¶</a></h3><p>Two measures of multicolinearity between variables are the <em>tolerance</em> and <em>Variance Influence Factor (VIF)</em>.</p>
+<hr/>
+<h1 id="Model-Selection">Model Selection<a class="anchor-link" href="#Model-Selection">¶</a></h1><p>When is it useful to select a sub-model (or nested model) instead of the complete one?</p>
 <ul>
-<li>$Tol(x_p) = 1 - R^2_p$</li>
-<li>$VIF(x_p) = \large \frac{1}{Tol(x_p)} = \frac{1}{1 - R^2_p}$</li>
-<li>$R^2_p$ is the coefficient of determination (i.e. the R-squared) of the linear regression of $x_p$ on all the other predictors. </li>
+<li>When certain dependent variables do not contribute to the model</li>
+<li>When variables are highly colinear</li>
+<li>Moreover, in cases of similar R2 values, a simpler model (i.e. with fewer variables) is generally preferred to a more complex one </li>
 </ul>
-<p>In effect, this means running a regression model with $x_p$ as the independent variable and all other $x_1,...,x_{p-1}$ dependent variables as predictors. If $x_p$ is orthogonal to all other variables (i.e. covariance is zero) then $VIF(x_p) = 1$</p>
-<p>It can be shown that the variance of a coefficient is a function of the VIF, namely:</p>
-<p>$\hat \beta_{B_p} = \large \frac{\hat \sigma^2}{\sum_{i=1}^n (x_{ip} - \bar x_p)^2} \small \times VIF(x_p)$</p>
-<p>Values where $Tol &lt; .5$ and $VIF &gt; 2$ are to be investigated for multicolinearity</p>
-<h3 id="What-to-do-in-cases-of-multicolinearity">What to do in cases of multicolinearity<a class="anchor-link" href="#What-to-do-in-cases-of-multicolinearity">¶</a></h3><ul>
-<li>Increase the sample size</li>
-<li>Select a subset of dependent variables </li>
-<li>Perform Principal Component Analysis and then regression on the result</li>
-<li>Ridge regression</li>
-<li>PLS regression</li>
-<li>LASSO regression</li>
+<h3 id="Step-by-Step-approach:">Step by Step approach:<a class="anchor-link" href="#Step-by-Step-approach:">¶</a></h3><p>Comparing all models to each other would result in $2^p$ possible combinations which is unfeasable in most cases. Instead use a step by step approach. There are three main approaches that can be used:</p>
+<ul>
+<li>Forward selection: start with a simple regression and add new variables</li>
+<li>Backward elimination: Start with the complet model and remove variables</li>
+<li>Stepwise: Start with a simple regression, add new variables and remove already existing variables at each step (based on pre-defined set of criteria) </li>
 </ul>
+<p><strong>Forward Selection approach </strong> - Which variable select at each step ?</p>
+<ul>
+<li>Step 1: Select the variable that has the highest correlation with the $y$ variable. </li>
+<li>Step 2: Calculate the $p-1$ F statistics that compare the models between all variables</li>
+<li>Step 3: Select the variable with the highest F statistic (as long as the p-value is smaller than a pre-defined level SLENTRY)</li>
+<li>Repeat until there are no longer any variables that are statistically significant given the pre-defined level SLENTRY</li>
+</ul>
+<h3 id="Coefficient-of-Mallows">Coefficient of Mallows<a class="anchor-link" href="#Coefficient-of-Mallows">¶</a></h3><p>Given a complete model with P parameters, the coefficient of Mallows allows to measure the quality of the nested model with $r&lt;P$ parameters.</p>
+<p>$C_p = \frac{SS_{Res-r}}{\hat \sigma^2} - (n - 2r)$</p>
+<ul>
+<li>$SS_{Res-r}$ is the sum of square of the residuals in the nested model with $r$ parameters</li>
+<li>$\hat \sigma^2$ is the estimate of $\sigma^2$ in the complete model with $p$ parameters </li>
+</ul>
+<p>According to Mallows, a model with $r$ parameters is satisfactory if the value of $C_p \approx r$ or less. The higher the value of $C_p$ the more uncertainty there is on the estimations</p>
 </div>
 </div>
 </div>
@@ -1651,28 +1768,32 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Calculating-Tolerance-and-VIF-using-the-previously-implemented-model-class">Calculating Tolerance and VIF using the previously implemented model class<a class="anchor-link" href="#Calculating-Tolerance-and-VIF-using-the-previously-implemented-model-class">¶</a></h3><p>For each variable in the dataset (i.e. colunm p in matrix X), run the regression model with column p as the y-variable, and the remaining variables as the dependent predictors. For each regression model, calculate the R2 value and the associated tol / VIF</p>
+<h2 id="Implementation-of-model-selection-in-Python-(to-be-completed)">Implementation of model selection in Python (to be completed)<a class="anchor-link" href="#Implementation-of-model-selection-in-Python-(to-be-completed)">¶</a></h2><p>To be continued...</p>
+<p><a href="https://planspace.org/20150423-forward_selection_with_statsmodels/">https://planspace.org/20150423-forward_selection_with_statsmodels/</a></p>
+<p><a href="https://github.com/avinashbarnwal/Python-Stepwise-Regression/blob/master/Code.py">https://github.com/avinashbarnwal/Python-Stepwise-Regression/blob/master/Code.py</a></p>
+<p><a href="https://github.com/avinashbarnwal/Python-Stepwise-Regression">https://github.com/avinashbarnwal/Python-Stepwise-Regression</a></p>
+<p><a href="https://datascience.stackexchange.com/questions/24405/how-to-do-stepwise-regression-using-sklearn/24447#24447?newreg=73e38e7b7b694b7fb595e3f81404da79">https://datascience.stackexchange.com/questions/24405/how-to-do-stepwise-regression-using-sklearn/24447#24447?newreg=73e38e7b7b694b7fb595e3f81404da79</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Implementation-of-Multiple-Linear-Regression-using-Statsmodel">Implementation of Multiple Linear Regression using Statsmodel<a class="anchor-link" href="#Implementation-of-Multiple-Linear-Regression-using-Statsmodel">¶</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [265]:</div>
+<div class="prompt input_prompt">In [374]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">calc_VIF</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-    <span class="c1">#Calculate the VIF and Tol values for each variable in the dataset X, </span>
-    <span class="c1">#Note that the first column of X is assumed to be a column of 1s</span>
-    <span class="c1">#These are measures of multicolinearity</span>
-    
-    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
-        <span class="n">tmp_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">tmp_y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="n">p</span><span class="p">]</span>
-        <span class="n">tmp_model</span> <span class="o">=</span> <span class="n">multiple_linear_reg_model</span><span class="p">(</span><span class="n">tmp_X</span><span class="p">,</span><span class="n">tmp_y</span><span class="p">)</span>
-        <span class="n">tmp_model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">tmp_model</span><span class="o">.</span><span class="n">R2</span><span class="p">))</span>
-
-<span class="p">(</span><span class="n">calc_VIF</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="c1">#Fit the model and print output</span>
+<span class="n">lm2</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">Data</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">lm2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1682,154 +1803,73 @@ h6:hover .anchor-link {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>317.9996092195645
-7.457799166580867
-2.139859154331602
-38.12230697102174
-504.2108220874723
-1.9119671112791923
+<pre>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.939
+Model:                            OLS   Adj. R-squared:                  0.906
+Method:                 Least Squares   F-statistic:                     28.33
+Date:                Fri, 18 May 2018   Prob (F-statistic):           4.48e-06
+Time:                        11:25:23   Log-Likelihood:                -128.87
+No. Observations:                  18   AIC:                             271.7
+Df Residuals:                      11   BIC:                             278.0
+Df Model:                           6                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+CONSTANT    -226.4078   1344.210     -0.168      0.869   -3184.993    2732.178
+SURFACE       28.2901     54.305      0.521      0.613     -91.235     147.815
+PERS        -456.2616    229.229     -1.990      0.072    -960.791      48.268
+PAVILLON     595.9837    276.274      2.157      0.054     -12.090    1204.058
+AGE            8.4073     27.067      0.311      0.762     -51.167      67.982
+VOL            4.5207     20.086      0.225      0.826     -39.687      48.729
+SBAINS       -78.4555    219.732     -0.357      0.728    -562.082     405.171
+==============================================================================
+Omnibus:                        1.311   Durbin-Watson:                   1.583
+Prob(Omnibus):                  0.519   Jarque-Bera (JB):                0.995
+Skew:                          -0.540   Prob(JB):                        0.608
+Kurtosis:                       2.600   Cond. No.                     5.13e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 5.13e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/anaconda3/lib/python3.6/site-packages/scipy/stats/stats.py:1390: UserWarning: kurtosistest only valid for n&gt;=20 ... continuing anyway, n=18
+  "anyway, n=%i" % int(n))
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [237]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="n">tmp_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">tmp_X</span><span class="o">.</span><span class="n">shape</span>
-<span class="n">tmp_y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="n">p</span><span class="p">]</span>
-<span class="n">tmp_y</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[237]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>(18,)</pre>
-</div>
-</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Influence-study">Influence study<a class="anchor-link" href="#Influence-study">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [238]:</div>
+<div class="prompt input_prompt">In [375]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">tmp_X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">tmp_X</span><span class="p">)</span> <span class="o">@</span> <span class="n">tmp_X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">tmp_y</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[238]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>array([ 0.64158249, -0.01266059, -0.05728787,  0.28649352, -0.01080432,
-        0.0080723 ])</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [68]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span>    
-        <span class="c1">#Other attributes are created here but initialized in the corresponding methods</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y_hat</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">SS_tot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">SS_res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">SS_exp</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Sn_2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">S_A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">S_B</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">R_squared</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T_A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T_B</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">F_pvalue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T_A_pvalue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T_B_pvalue</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CI_reg_upp</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">CI_reg_low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">CI_pred_upp</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">CI_pred_low</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">S_epsilon</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cook_Distance</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
-    
-    <span class="k">def</span> <span class="nf">fitModel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1">#Fit the linear regression model to the data and compute the coefficients</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s_xy</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">s_xx</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_bar</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_bar</span>
-        
-        <span class="c1">#Predicted values y_hat, residuals and leverage</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_hat</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_bar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">s_xx</span><span class="p">)</span>
-        
-        <span class="c1">#Sum of squared</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">SS_tot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_bar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">SS_res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_hat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">SS_exp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_hat</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_bar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
-        
-        <span class="c1">#Estimators of the variances</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Sn_2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">SS_res</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">S_A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Sn_2</span> <span class="o">*</span> <span class="p">(</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_bar</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">s_xx</span> <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">S_B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Sn_2</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">s_xx</span>
-        
-        <span class="c1">#Coefficient of determination: R squared</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">R_squared</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SS_exp</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">SS_tot</span>
-        
-        <span class="c1">#Test statistics</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">T_A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">S_A</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">T_B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">S_B</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SS_exp</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">SS_res</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span>
-        
-        <span class="c1">#Confidence intervals around the given observations</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="o">.</span><span class="mi">975</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CI_reg_upp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Sn_2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CI_reg_low</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">t</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Sn_2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CI_pred_upp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Sn_2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">CI_pred_low</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">t</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Sn_2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">))</span>
-        
-        <span class="c1">#Variance of the residuals and Cook's distance</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">S_epsilon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Sn_2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Cook_Distance</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Sn_2</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
-        
-    <span class="k">def</span> <span class="nf">pValues</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1">#Compute the p-values associated with the test statistics, given that the null hypothesis</span>
-        <span class="c1">#H_0: no linear relationship between x and y, i.e. coefficients are = 0 </span>
-        <span class="c1">#Note that we use the statsmodel library here</span>
-        <span class="c1">#Note - to be checked...</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">T_A_pvalue</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">T_A</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">T_B_pvalue</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">T_B</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">F_pvalue</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">-</span><span class="mi">2</span> <span class="p">)</span> <span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">printResults</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1">#Print results in a similar format to SAS output</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">'Parameter Estimates'</span><span class="p">)</span>
-        <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'1. DF'</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span> <span class="p">],</span> <span class="s1">'2. Parameter Estimate'</span><span class="p">:[</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">],</span> <span class="s1">'3. Standard Error'</span><span class="p">:[</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">S_A</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">S_B</span><span class="p">)],</span> 
-                          <span class="s1">'4. t Value'</span><span class="p">:</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">T_A</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">T_B</span><span class="p">],</span> <span class="s1">'5. Pr &gt; |t|'</span><span class="p">:</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">T_A_pvalue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T_B_pvalue</span><span class="p">]},</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Intercept (a)'</span><span class="p">,</span><span class="s1">'SURFACE (b)'</span><span class="p">])</span>
-        
-        <span class="n">display</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-        <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'1. DF'</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">-</span><span class="mi">2</span> <span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'2. Sum of Squares'</span><span class="p">:[</span><span class="bp">self</span><span class="o">.</span><span class="n">SS_exp</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">SS_res</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">SS_tot</span><span class="p">],</span> <span class="s1">'3. F_value'</span><span class="p">:[</span><span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s1">''</span><span class="p">],</span> 
-                          <span class="s1">'4. Pr &gt; F'</span><span class="p">:</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">F_pvalue</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s1">''</span><span class="p">]},</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Model (Explained)'</span><span class="p">,</span><span class="s1">'Error (Residuals)'</span><span class="p">,</span><span class="s1">'Total'</span><span class="p">])</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">'Analysis of Variance'</span><span class="p">)</span>
-        <span class="n">display</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-        
-        <span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Values'</span><span class="p">:</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">y_bar</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">R_squared</span><span class="p">]},</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Dependent Mean (y_bar)'</span><span class="p">,</span><span class="s1">'R-squared'</span><span class="p">])</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">'Mean and R-squared'</span><span class="p">)</span>
-        <span class="n">display</span><span class="p">(</span><span class="n">df3</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-        
-        
-        <span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'1. Dependent Variable'</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="s1">'2. Predicted Value'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_hat</span><span class="p">,</span> <span class="s1">'3. Residual'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="p">,</span> 
-                          <span class="s1">'3. Std Error Residuals'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">S_epsilon</span><span class="p">)</span> <span class="p">,</span><span class="s1">'4. 95% CI Mean -'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">CI_reg_low</span><span class="p">,</span> <span class="s1">'5. 95% CI Mean +'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">CI_reg_upp</span><span class="p">,</span> <span class="s1">'6. 95% CI Pred -'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">CI_pred_low</span><span class="p">,</span>
-                          <span class="s1">'7. 95% CI Pred +'</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">CI_pred_upp</span><span class="p">,</span> <span class="s1">'8. Leverage (h)'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="s1">'9. Cook Distance'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cook_Distance</span><span class="p">})</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">'Output statistics'</span><span class="p">)</span>
-        <span class="n">display</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-        
-        
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Creating the influence object from the OLS results</span>
+<span class="n">influence</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_influence</span><span class="p">()</span>
+
+<span class="c1">#Cooks distance for the x observations</span>
+<span class="n">display</span><span class="p">(</span><span class="n">influence</span><span class="o">.</span><span class="n">cooks_distance</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1">#Leverage values for the x observations</span>
+<span class="n">display</span><span class="p">(</span><span class="n">influence</span><span class="o">.</span><span class="n">hat_matrix_diag</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1838,13 +1878,361 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">"&lt;tokenize&gt;"</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">14</span>
-<span class="ansi-red-fg">    def fitModel(self):</span>
-    ^
-<span class="ansi-red-fg">IndentationError</span><span class="ansi-red-fg">:</span> unindent does not match any outer indentation level
-</pre>
+<div class="output_text output_subarea ">
+<pre>array([0.137, 0.117, 0.035, 0.008, 0.   , 0.062, 0.001, 0.012, 0.038,
+       0.021, 0.01 , 0.062, 0.643, 0.005, 0.21 , 0.143, 0.01 , 0.   ])</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_text output_subarea ">
+<pre>array([0.518, 0.283, 0.256, 0.758, 0.377, 0.222, 0.164, 0.176, 0.442,
+       0.403, 0.433, 0.323, 0.522, 0.707, 0.281, 0.338, 0.511, 0.284])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [376]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">influence</span><span class="o">.</span><span class="n">summary_frame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[376]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>dfb_CONSTANT</th>
+<th>dfb_SURFACE</th>
+<th>dfb_PERS</th>
+<th>dfb_PAVILLON</th>
+<th>dfb_AGE</th>
+<th>dfb_VOL</th>
+<th>dfb_SBAINS</th>
+<th>cooks_d</th>
+<th>dffits</th>
+<th>dffits_internal</th>
+<th>hat_diag</th>
+<th>standard_resid</th>
+<th>student_resid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>0.267059</td>
+<td>-0.191389</td>
+<td>-0.254184</td>
+<td>0.462714</td>
+<td>-0.082546</td>
+<td>0.198024</td>
+<td>-0.493845</td>
+<td>0.137382</td>
+<td>0.975485</td>
+<td>0.980648</td>
+<td>0.518275</td>
+<td>0.945438</td>
+<td>0.940460</td>
+</tr>
+<tr>
+<th>1</th>
+<td>-0.166126</td>
+<td>0.273037</td>
+<td>-0.131212</td>
+<td>0.338039</td>
+<td>0.170883</td>
+<td>-0.256823</td>
+<td>0.431373</td>
+<td>0.116795</td>
+<td>0.957119</td>
+<td>0.904194</td>
+<td>0.282612</td>
+<td>1.440602</td>
+<td>1.524923</td>
+</tr>
+<tr>
+<th>2</th>
+<td>0.295719</td>
+<td>-0.244500</td>
+<td>-0.341486</td>
+<td>-0.233486</td>
+<td>-0.285578</td>
+<td>0.271764</td>
+<td>-0.045340</td>
+<td>0.035304</td>
+<td>0.490224</td>
+<td>0.497122</td>
+<td>0.256430</td>
+<td>0.846524</td>
+<td>0.834778</td>
+</tr>
+<tr>
+<th>3</th>
+<td>-0.030936</td>
+<td>-0.005752</td>
+<td>0.022551</td>
+<td>-0.051683</td>
+<td>0.019529</td>
+<td>0.002882</td>
+<td>0.130705</td>
+<td>0.008234</td>
+<td>0.229103</td>
+<td>0.240084</td>
+<td>0.757877</td>
+<td>0.135701</td>
+<td>0.129494</td>
+</tr>
+<tr>
+<th>4</th>
+<td>-0.010776</td>
+<td>0.014537</td>
+<td>-0.006683</td>
+<td>0.008679</td>
+<td>0.008888</td>
+<td>-0.012626</td>
+<td>0.011099</td>
+<td>0.000199</td>
+<td>0.035563</td>
+<td>0.037295</td>
+<td>0.377336</td>
+<td>0.047908</td>
+<td>0.045684</td>
+</tr>
+<tr>
+<th>5</th>
+<td>-0.201688</td>
+<td>0.194796</td>
+<td>0.380030</td>
+<td>-0.268086</td>
+<td>0.269613</td>
+<td>-0.222128</td>
+<td>-0.031148</td>
+<td>0.062181</td>
+<td>0.677692</td>
+<td>0.659745</td>
+<td>0.222312</td>
+<td>1.233951</td>
+<td>1.267518</td>
+</tr>
+<tr>
+<th>6</th>
+<td>0.013666</td>
+<td>0.000141</td>
+<td>0.000387</td>
+<td>-0.023370</td>
+<td>-0.000922</td>
+<td>-0.002490</td>
+<td>0.016116</td>
+<td>0.001112</td>
+<td>0.084264</td>
+<td>0.088217</td>
+<td>0.164189</td>
+<td>0.199038</td>
+<td>0.190118</td>
+</tr>
+<tr>
+<th>7</th>
+<td>0.042115</td>
+<td>-0.042565</td>
+<td>-0.096038</td>
+<td>0.165867</td>
+<td>-0.029444</td>
+<td>0.043498</td>
+<td>0.021053</td>
+<td>0.012224</td>
+<td>-0.284109</td>
+<td>-0.292518</td>
+<td>0.176456</td>
+<td>-0.631943</td>
+<td>-0.613778</td>
+</tr>
+<tr>
+<th>8</th>
+<td>-0.386304</td>
+<td>0.351272</td>
+<td>0.379276</td>
+<td>0.214081</td>
+<td>0.396165</td>
+<td>-0.374046</td>
+<td>0.038893</td>
+<td>0.038137</td>
+<td>-0.500352</td>
+<td>-0.516678</td>
+<td>0.442193</td>
+<td>-0.580304</td>
+<td>-0.561967</td>
+</tr>
+<tr>
+<th>9</th>
+<td>-0.131918</td>
+<td>0.136634</td>
+<td>0.276086</td>
+<td>-0.063325</td>
+<td>0.161994</td>
+<td>-0.164900</td>
+<td>0.056113</td>
+<td>0.020700</td>
+<td>0.366538</td>
+<td>0.380659</td>
+<td>0.403012</td>
+<td>0.463298</td>
+<td>0.446111</td>
+</tr>
+<tr>
+<th>10</th>
+<td>0.081164</td>
+<td>-0.089095</td>
+<td>-0.172449</td>
+<td>-0.147251</td>
+<td>-0.107777</td>
+<td>0.105908</td>
+<td>0.092717</td>
+<td>0.010397</td>
+<td>-0.258340</td>
+<td>-0.269774</td>
+<td>0.433131</td>
+<td>-0.308626</td>
+<td>-0.295545</td>
+</tr>
+<tr>
+<th>11</th>
+<td>-0.118410</td>
+<td>0.216766</td>
+<td>-0.081196</td>
+<td>0.377380</td>
+<td>0.167441</td>
+<td>-0.181553</td>
+<td>-0.392094</td>
+<td>0.061832</td>
+<td>0.654898</td>
+<td>0.657895</td>
+<td>0.322737</td>
+<td>0.953038</td>
+<td>0.948698</td>
+</tr>
+<tr>
+<th>12</th>
+<td>0.134494</td>
+<td>-0.577395</td>
+<td>0.001653</td>
+<td>-0.259179</td>
+<td>-0.937519</td>
+<td>0.653914</td>
+<td>-0.442534</td>
+<td>0.643302</td>
+<td>-2.559300</td>
+<td>-2.122055</td>
+<td>0.521910</td>
+<td>-2.031017</td>
+<td>-2.449504</td>
+</tr>
+<tr>
+<th>13</th>
+<td>0.103940</td>
+<td>-0.097562</td>
+<td>-0.030432</td>
+<td>0.054809</td>
+<td>-0.082381</td>
+<td>0.083513</td>
+<td>0.080036</td>
+<td>0.005162</td>
+<td>0.181372</td>
+<td>0.190095</td>
+<td>0.707262</td>
+<td>0.122298</td>
+<td>0.116686</td>
+</tr>
+<tr>
+<th>14</th>
+<td>0.762526</td>
+<td>-0.751499</td>
+<td>-0.145056</td>
+<td>-0.104355</td>
+<td>-0.523455</td>
+<td>0.667436</td>
+<td>-0.271612</td>
+<td>0.209536</td>
+<td>-1.422263</td>
+<td>-1.211096</td>
+<td>0.281215</td>
+<td>-1.936237</td>
+<td>-2.273840</td>
+</tr>
+<tr>
+<th>15</th>
+<td>-0.527851</td>
+<td>0.536147</td>
+<td>0.173391</td>
+<td>-0.364203</td>
+<td>0.516324</td>
+<td>-0.529770</td>
+<td>0.679346</td>
+<td>0.143396</td>
+<td>-1.054169</td>
+<td>-1.001884</td>
+<td>0.337839</td>
+<td>-1.402632</td>
+<td>-1.475832</td>
+</tr>
+<tr>
+<th>16</th>
+<td>0.007079</td>
+<td>-0.067266</td>
+<td>0.037422</td>
+<td>-0.085652</td>
+<td>-0.075608</td>
+<td>0.072155</td>
+<td>-0.030599</td>
+<td>0.010348</td>
+<td>0.257429</td>
+<td>0.269143</td>
+<td>0.511430</td>
+<td>0.263059</td>
+<td>0.251609</td>
+</tr>
+<tr>
+<th>17</th>
+<td>-0.008446</td>
+<td>0.008537</td>
+<td>-0.002063</td>
+<td>-0.023692</td>
+<td>0.003511</td>
+<td>-0.005436</td>
+<td>-0.010492</td>
+<td>0.000223</td>
+<td>0.037696</td>
+<td>0.039529</td>
+<td>0.283784</td>
+<td>0.062798</td>
+<td>0.059886</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -1881,6 +2269,18 @@ h6:hover .anchor-link {
 </script></div>
 	<hr>
 	<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'xavierbourretsicotte.github.io'; 
+    var disqus_title = 'Statistical inference on multiple linear regression';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
 		</div>
 	</div> 	<!-- <hr> -->
@@ -1907,7 +2307,8 @@ h6:hover .anchor-link {
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="/category/statistics.html">Statistics (3)</a></li>
+							<li><a href="/category/machine-learning.html">Machine Learning (2)</a></li>
+							<li><a href="/category/statistics.html">Statistics (2)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
