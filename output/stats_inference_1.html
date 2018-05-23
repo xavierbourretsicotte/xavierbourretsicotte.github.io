@@ -1024,8 +1024,17 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><h1>Table of Contents<span class="tocSkip"></span></h1></p>
+<div class="toc"><ul class="toc-item"><li><span><a data-toc-modified-id="Inferential-Statistics---Simple-Linear-Regression-1" href="#Inferential-Statistics---Simple-Linear-Regression"><span class="toc-item-num">1  </span>Inferential Statistics - Simple Linear Regression</a></span><ul class="toc-item"><li><span><a data-toc-modified-id="Introduction-1.1" href="#Introduction"><span class="toc-item-num">1.1  </span>Introduction</a></span></li><li><span><a data-toc-modified-id="Maximum-Likelihood-Model---Normally-distributed-errors-1.2" href="#Maximum-Likelihood-Model---Normally-distributed-errors"><span class="toc-item-num">1.2  </span>Maximum Likelihood Model - Normally distributed errors</a></span></li><li><span><a data-toc-modified-id="Confidence-intervals-1.3" href="#Confidence-intervals"><span class="toc-item-num">1.3  </span>Confidence intervals</a></span></li><li><span><a data-toc-modified-id="Some-comments-on-the-residuals-1.4" href="#Some-comments-on-the-residuals"><span class="toc-item-num">1.4  </span>Some comments on the residuals</a></span></li></ul></li><li><span><a data-toc-modified-id="Implementation-using-Numpy--and-Pandas-2" href="#Implementation-using-Numpy--and-Pandas"><span class="toc-item-num">2  </span>Implementation using Numpy  and Pandas</a></span><ul class="toc-item"><li><span><a data-toc-modified-id="Custom-Python-class-2.1" href="#Custom-Python-class"><span class="toc-item-num">2.1  </span>Custom Python class</a></span></li><li><span><a data-toc-modified-id="Initialize-the-model,-perform-the-fitting-and-probability-calculations-and-print-the-results-in-SAS-format-2.2" href="#Initialize-the-model,-perform-the-fitting-and-probability-calculations-and-print-the-results-in-SAS-format"><span class="toc-item-num">2.2  </span>Initialize the model, perform the fitting and probability calculations and print the results in SAS format</a></span></li><li><span><a data-toc-modified-id="Print-the-resulting-scatter-plot-and-regression-line--with-confidence-intervals-2.3" href="#Print-the-resulting-scatter-plot-and-regression-line--with-confidence-intervals"><span class="toc-item-num">2.3  </span>Print the resulting scatter plot and regression line  with confidence intervals</a></span></li><li><span><a data-toc-modified-id="Study-of-the-residuals-and-influential-points-2.4" href="#Study-of-the-residuals-and-influential-points"><span class="toc-item-num">2.4  </span>Study of the residuals and influential points</a></span></li></ul></li><li><span><a data-toc-modified-id="Implementation-using-Statsmodel-library-3" href="#Implementation-using-Statsmodel-library"><span class="toc-item-num">3  </span>Implementation using Statsmodel library</a></span><ul class="toc-item"><li><span><a data-toc-modified-id="Study-of-influence-3.1" href="#Study-of-influence"><span class="toc-item-num">3.1  </span>Study of influence</a></span></li><li><span><a data-toc-modified-id="Influence-plots-3.2" href="#Influence-plots"><span class="toc-item-num">3.2  </span>Influence plots</a></span></li></ul></li><li><span><a data-toc-modified-id="Implementation-using-Sklearn-4" href="#Implementation-using-Sklearn"><span class="toc-item-num">4  </span>Implementation using Sklearn</a></span></li><li><span><a data-toc-modified-id="Sources-5" href="#Sources"><span class="toc-item-num">5  </span>Sources</a></span></li></ul></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Inferential-Statistics---Simple-Linear-Regression">Inferential Statistics - Simple Linear Regression<a class="anchor-link" href="#Inferential-Statistics---Simple-Linear-Regression">¶</a></h1><p>This notebook explores various implementations of <em>statistical inferences</em> of a <strong>simple linear regression model. </strong></p>
-<p>As the derivations of the model and the associated statistics have been covered in numerous books, lectures and notebooks (see sources) we will focus instead on a case study and its Python implementation using three main libraries.</p>
+<p>As the derivations of the model and the associated statistics have been covered in numerous books, lectures and notebooks (see sources) we will focus instead on summary of the main formula and a case study and its Python implementation using three main libraries.</p>
 <p>This notebook is divided into four main sections:</p>
 <ol>
 <li>Introduction: notation, model description, formula, hypothesis</li>
@@ -1033,7 +1042,7 @@ h6:hover .anchor-link {
 <li>Implementation using Statsmodel</li>
 <li>Implementation using Scikit Learn</li>
 </ol>
-<h1 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction">¶</a></h1><h3 id="Libraries">Libraries<a class="anchor-link" href="#Libraries">¶</a></h3>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><h3 id="Libraries">Libraries<a class="anchor-link" href="#Libraries">¶</a></h3>
 </div>
 </div>
 </div>
@@ -1311,7 +1320,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2.-Implementation-using-Numpy--and-Pandas">2. Implementation using Numpy  and Pandas<a class="anchor-link" href="#2.-Implementation-using-Numpy--and-Pandas">¶</a></h1><h2 id="2.1-Custom-Python-class">2.1 Custom Python class<a class="anchor-link" href="#2.1-Custom-Python-class">¶</a></h2><p><em>Note that Statsmodel is used for probability calculations</em></p>
+<h1 id="Implementation-using-Numpy--and-Pandas">Implementation using Numpy  and Pandas<a class="anchor-link" href="#Implementation-using-Numpy--and-Pandas">¶</a></h1><h2 id="Custom-Python-class">Custom Python class<a class="anchor-link" href="#Custom-Python-class">¶</a></h2><p><em>Note that Statsmodel is used for probability calculations</em></p>
 </div>
 </div>
 </div>
@@ -1447,7 +1456,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.2-Initialize-the-model,-perform-the-fitting-and-probability-calculations-and-print-the-results-in-SAS-format">2.2 Initialize the model, perform the fitting and probability calculations and print the results in SAS format<a class="anchor-link" href="#2.2-Initialize-the-model,-perform-the-fitting-and-probability-calculations-and-print-the-results-in-SAS-format">¶</a></h2><p>Given the very small p-values for both the slope parameter $B$ and the model as a whole, we can confidently reject the null hypothesis and state that there is a statistically significant linear relationship between the explanatory variable $x$ and the dependent variable $y$</p>
+<h2 id="Initialize-the-model,-perform-the-fitting-and-probability-calculations-and-print-the-results-in-SAS-format">Initialize the model, perform the fitting and probability calculations and print the results in SAS format<a class="anchor-link" href="#Initialize-the-model,-perform-the-fitting-and-probability-calculations-and-print-the-results-in-SAS-format">¶</a></h2><p>Given the very small p-values for both the slope parameter $B$ and the model as a whole, we can confidently reject the null hypothesis and state that there is a statistically significant linear relationship between the explanatory variable $x$ and the dependent variable $y$</p>
 </div>
 </div>
 </div>
@@ -2055,7 +2064,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.3-Print-the-resulting-scatter-plot-and-regression-line--with-confidence-intervals">2.3 Print the resulting scatter plot and regression line  with confidence intervals<a class="anchor-link" href="#2.3-Print-the-resulting-scatter-plot-and-regression-line--with-confidence-intervals">¶</a></h2>
+<h2 id="Print-the-resulting-scatter-plot-and-regression-line--with-confidence-intervals">Print the resulting scatter plot and regression line  with confidence intervals<a class="anchor-link" href="#Print-the-resulting-scatter-plot-and-regression-line--with-confidence-intervals">¶</a></h2>
 </div>
 </div>
 </div>
@@ -2104,7 +2113,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.4-Study-of-the-residuals-and-influential-points">2.4 Study of the residuals and influential points<a class="anchor-link" href="#2.4-Study-of-the-residuals-and-influential-points">¶</a></h2><p>Studying the residuals is fundamental as it allows to highlight observations which are</p>
+<h2 id="Study-of-the-residuals-and-influential-points">Study of the residuals and influential points<a class="anchor-link" href="#Study-of-the-residuals-and-influential-points">¶</a></h2><p>Studying the residuals is fundamental as it allows to highlight observations which are</p>
 <ul>
 <li>Potential outliers </li>
 <li>Play an important role in the regression analysis</li>
@@ -2162,7 +2171,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3.-Implementation-using-Statsmodel-library">3. Implementation using Statsmodel library<a class="anchor-link" href="#3.-Implementation-using-Statsmodel-library">¶</a></h1><p>The python statsmodel library offers extensive functionalities and reports for the linear regression model. We will explore the main ones in this section</p>
+<h1 id="Implementation-using-Statsmodel-library">Implementation using Statsmodel library<a class="anchor-link" href="#Implementation-using-Statsmodel-library">¶</a></h1><p>The python statsmodel library offers extensive functionalities and reports for the linear regression model. We will explore the main ones in this section</p>
 <ul>
 <li>As recommended by Statsmodel, import the statsmodel api to access the functions and models. </li>
 <li>Importing statsmodels.api will load most of the public parts of statsmodels. This makes most functions and classes conveniently available within one or two levels, without making the “sm” namespace too crowded.</li>
@@ -2244,7 +2253,7 @@ Warnings:
 <li>The formatted table offers a more concise summary of the information</li>
 <li>Statsmodel also performs a number of tests by default: for example the Durbin Watson, Jarque Bera etc.. </li>
 </ul>
-<h2 id="3.2-Study-of-influence">3.2 Study of influence<a class="anchor-link" href="#3.2-Study-of-influence">¶</a></h2><p>The Statsmodel result object has a built-in method which returns an Influence object with influence and outlier measures. This "influence" object contains many results, methods and methods which can be called as required. See below for a few interesting ones:</p>
+<h2 id="Study-of-influence">Study of influence<a class="anchor-link" href="#Study-of-influence">¶</a></h2><p>The Statsmodel result object has a built-in method which returns an Influence object with influence and outlier measures. This "influence" object contains many results, methods and methods which can be called as required. See below for a few interesting ones:</p>
 <ul>
 <li>.cooks_distance - Cooks distance</li>
 <li>.hat_matrix_diag - The leverage for observation points</li>
@@ -2661,7 +2670,7 @@ Warnings:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.3-Influence-plots">3.3 Influence plots<a class="anchor-link" href="#3.3-Influence-plots">¶</a></h2><p>Influence plots show the externally studentized residuals vs the leverage of each observation as measured by the hat matrix (here this is only the leverage as there are no matrices in simple linear regression)</p>
+<h2 id="Influence-plots">Influence plots<a class="anchor-link" href="#Influence-plots">¶</a></h2><p>Influence plots show the externally studentized residuals vs the leverage of each observation as measured by the hat matrix (here this is only the leverage as there are no matrices in simple linear regression)</p>
 <p>Externally studentized residuals are residuals that are scaled by their standard deviation where:</p>
 <p>$var(\epsilon_i) = \sigma^2_i (1 - h_i)$</p>
 <p>The influence of each point can be visualized by the criterion keyword argument. Options are Cook's distance and DFFITS, two measures of influence</p>
@@ -2700,7 +2709,7 @@ Warnings:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="4.-Implementation-using-Sklearn">4. Implementation using Sklearn<a class="anchor-link" href="#4.-Implementation-using-Sklearn">¶</a></h1><p>There exists no R type regression summary report in sklearn. The main reason is that sklearn is used for predictive modelling / machine learning and the evaluation criteria are based on performance on previously unseen data (such as predictive r^2 for regression).</p>
+<h1 id="Implementation-using-Sklearn">Implementation using Sklearn<a class="anchor-link" href="#Implementation-using-Sklearn">¶</a></h1><p>There exists no R type regression summary report in sklearn. The main reason is that sklearn is used for predictive modelling / machine learning and the evaluation criteria are based on performance on previously unseen data (such as predictive r^2 for regression).</p>
 <p>Nevertheless we can extract some key values and parameters using the built in methods and attributes, in particular the <strong>regression metrics:</strong></p>
 <p>Documentation: <a href="http://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics">http://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics</a></p>
 </div>
@@ -2805,6 +2814,18 @@ R2 score: 0.87
 </script></div>
 	<hr>
 	<h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'xavierbourretsicotte.github.io'; 
+    var disqus_title = 'Statistical inference on simple linear regression';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
 		</div>
 	</div> 	<!-- <hr> -->
@@ -2830,7 +2851,8 @@ R2 score: 0.87
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="/category/statistics.html">Statistics (3)</a></li>
+							<li><a href="/category/machine-learning.html">Machine Learning (2)</a></li>
+							<li><a href="/category/statistics.html">Statistics (2)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
