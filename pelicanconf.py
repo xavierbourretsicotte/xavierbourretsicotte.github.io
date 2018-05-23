@@ -31,11 +31,11 @@ USE_FOLDER_AS_CATEGORY = True
 
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
+#FEED_ALL_ATOM = None
+#CATEGORY_FEED_ATOM = None
+#TRANSLATION_FEED_ATOM = None
+#AUTHOR_FEED_ATOM = None
+#AUTHOR_FEED_RSS = None
 
 
 # Blogroll
@@ -46,6 +46,7 @@ LINKS = (
 # Social widget
 SOCIAL = (('github', 'https://github.com/xavierbourretsicotte'),
           ('linkedin', 'https://www.linkedin.com/in/xavier-bourret-sicotte/'),
+          ('stackexchange', 'https://stats.stackexchange.com/users/192854/xavier-bourret-sicotte'),
           )
 
 GOOGLE_ANALYTICS = 'UA-119498351-1'
@@ -80,11 +81,25 @@ MARKUP = ('md',)
 
 PLUGIN_PATHS = ['./plugins']
 
-PLUGINS = ['ipynb.liquid','i18n_subsites','render_math']
+PLUGINS = ['ipynb.liquid','i18n_subsites','render_math', 'sitemap']
 
 THEME = 'pelican-themes/aboutwilson'
 
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
+
+SITEMAP = {
+    'format': 'xml',
+    'priorities': {
+        'articles': 0.5,
+        'indexes': 0.5,
+        'pages': 0.5
+    },
+    'changefreqs': {
+        'articles': 'monthly',
+        'indexes': 'daily',
+        'pages': 'monthly'
+}
+}
 
 
 
