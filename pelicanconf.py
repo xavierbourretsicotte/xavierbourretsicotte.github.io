@@ -22,7 +22,7 @@ SITESUBTITLE = u'Data Science, Machine Learning and Statistics, implemented in P
 SITEURL = ''
 
 PATH = 'content'
-DELETE_OUTPUT_DIRECTORY = True
+DELETE_OUTPUT_DIRECTORY = False
 
 TIMEZONE = 'Europe/Paris'
 DEFAULT_LANG = u'en'
