@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/</loc>
-<lastmod>2018-06-11T11:43:33-00:00</lastmod>
+<lastmod>2018-06-12T11:08:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/archives.html</loc>
-<lastmod>2018-06-11T11:43:33-00:00</lastmod>
+<lastmod>2018-06-12T11:08:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/tags.html</loc>
-<lastmod>2018-06-11T11:43:33-00:00</lastmod>
+<lastmod>2018-06-12T11:08:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/categories.html</loc>
-<lastmod>2018-06-11T11:43:33-00:00</lastmod>
+<lastmod>2018-06-12T11:08:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>/pages/categories.html</loc>
 <lastmod>2018-05-23T10:00:00+02:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/coordinate_descent.html</loc>
+<lastmod>2018-06-12T10:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -89,7 +96,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/category/machine-learning.html</loc>
-<lastmod>2018-06-11T10:00:00+00:09</lastmod>
+<lastmod>2018-06-12T10:00:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -131,7 +138,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/author/xavier-bourret-sicotte.html</loc>
-<lastmod>2018-06-11T10:00:00+00:09</lastmod>
+<lastmod>2018-06-12T10:00:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

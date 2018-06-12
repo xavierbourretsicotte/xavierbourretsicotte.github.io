@@ -18,7 +18,7 @@ def system_path(path):
 
 AUTHOR = 'Xavier Bourret Sicotte'
 SITENAME = 'Data Blog'
-SITESUBTITLE = u'Data Science, Machine Learning and Statistics'
+SITESUBTITLE = u'Data Science, Machine Learning and Statistics, implemented in Python'
 SITEURL = ''
 
 PATH = 'content'
