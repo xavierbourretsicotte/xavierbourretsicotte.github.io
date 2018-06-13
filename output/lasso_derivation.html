@@ -1109,16 +1109,10 @@ h6:hover .anchor-link {
     \end{cases}
 \end{aligned}</p>
 <p>For the second case we must ensure that the closed interval contains the zero so that $\theta_j = 0$ is a global minimum</p>
-<p>\begin{aligned}
-     0  \in [-\rho_j  - \lambda ,-\rho_j + \lambda ]
-     \
-     -\rho_j  - \lambda \leq 0
-     \
-     -\rho_j  +\lambda \geq 0
-     \</p>
-<pre><code> - \lambda \leq \rho_j \leq \lambda
-</code></pre>
-<p>\end{aligned}</p>
+<p>$$ 0 \in [-\rho_j  - \lambda ,-\rho_j + \lambda ] $$</p>
+<p>$$     -\rho_j  - \lambda \leq 0 $$</p>
+<p>$$     -\rho_j  +\lambda \geq 0 $$</p>
+<p>$$     - \lambda \leq \rho_j \leq \lambda$$</p>
 <p>Solving for $\theta_j$ for the first and third case and combining with above:</p>
 <p>\begin{aligned}
      \begin{cases}
@@ -1149,7 +1143,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Some-background-and-intuition-on-subdifferentials">Some background and intuition on subdifferentials<a class="anchor-link" href="#Some-background-and-intuition-on-subdifferentials">¶</a></h1><p>As the previous derivation requires knowledge of subdifferential theory, the next section summarizes notes and intuition on the topic.</p>
-<h2 id="Taylor-approxumation-as-a-global-underestimator">Taylor approxumation as a global underestimator<a class="anchor-link" href="#Taylor-approxumation-as-a-global-underestimator">¶</a></h2><p>Before describing what subgradients are, recall that the first order Taylor approximation of a differentiable, convex function is always a <strong>global underestimator</strong> of that function. So given a differentiable, convex function $f : S \rightarrow \mathbb{R}$ over a convex set $S \subseteq \mathbb{R} $ we have</p>
+<h2 id="Taylor-approximation-as-a-global-underestimator">Taylor approximation as a global underestimator<a class="anchor-link" href="#Taylor-approximation-as-a-global-underestimator">¶</a></h2><p>Before describing what subgradients are, recall that the first order Taylor approximation of a differentiable, convex function is always a <strong>global underestimator</strong> of that function. So given a differentiable, convex function $f : S \rightarrow \mathbb{R}$ over a convex set $S \subseteq \mathbb{R} $ we have</p>
 <p>$$ f(b) \geq f(a) + f'(a)(b - a) \ \ , \forall a, b \in S $$</p>
 <p>The figure below illustrates this for $f(x) =x^2$. The blue lines depict the first order approximations to $f(y)$ at $x$, which are all under the curve</p>
 </div>
