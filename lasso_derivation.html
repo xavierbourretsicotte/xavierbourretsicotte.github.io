@@ -1015,14 +1015,14 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Derivation-of-coordinate-descent-for-Lasso-regression">Derivation of coordinate descent for Lasso regression<a class="anchor-link" href="#Derivation-of-coordinate-descent-for-Lasso-regression">¶</a></h1><p>This posts describes how the soft thresholding operator provides the solution to the Lasso regression problem when using coordinate descent algorithms. The derivation is taken from my post on <a href="https://stats.stackexchange.com/questions/123672/coordinate-descent-soft-thresholding-update-operator-for-lasso/351134#351134">statsexchange</a></p>
+<h1 id="Derivation-of-coordinate-descent-for-Lasso-regression">Derivation of coordinate descent for Lasso regression<a class="anchor-link" href="#Derivation-of-coordinate-descent-for-Lasso-regression">¶</a></h1><p>This posts describes how the soft thresholding operator provides the solution to the Lasso regression problem when using coordinate descent algorithms. The derivation is taken from my post on <a href="https://stats.stackexchange.com/questions/123672/coordinate-descent-soft-thresholding-update-operator-for-lasso/351134#351134">stackexchange</a></p>
 <h3 id="Libraries">Libraries<a class="anchor-link" href="#Libraries">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1116,7 +1116,7 @@ h6:hover .anchor-link {
 <p>Solving for $\theta_j$ for the first and third case and combining with above:</p>
 <p>\begin{aligned}
      \begin{cases}
-       \theta_j = \frac{\rho_j - \lambda}{z_j}  &amp; \text{for} \ \rho_j &lt; \lambda \\
+       \theta_j = \frac{\rho_j + \lambda}{z_j}  &amp; \text{for} \ \rho_j &lt; - \lambda \\
        \theta_j = 0 &amp; \text{for} \ - \lambda \leq \rho_j \leq \lambda \\
        \theta_j = \frac{\rho_j - \lambda}{z_j}  &amp; \text{for} \ \rho_j &gt; \lambda 
     \end{cases}
@@ -1151,7 +1151,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Lines below the x^2 function</span>
@@ -1200,7 +1200,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [4]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Lines below the |x| function</span>
@@ -1271,14 +1271,14 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [5]:</div>
+<div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">soft_threshold</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">lamda</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">lamda</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">lamda</span>
-    <span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="o">-</span> <span class="n">lamda</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">lamda</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">soft_threshold</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span><span class="n">lamda</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">rho</span> <span class="o">&lt;</span> <span class="o">-</span> <span class="n">lamda</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">rho</span> <span class="o">+</span> <span class="n">lamda</span>
+    <span class="k">elif</span> <span class="n">rho</span> <span class="o">&gt;</span> <span class="n">lamda</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">rho</span> <span class="o">-</span> <span class="n">lamda</span>
     <span class="k">else</span><span class="p">:</span> 
         <span class="k">return</span> <span class="mi">0</span>
 <span class="n">lamda</span> <span class="o">=</span> <span class="mi">3</span>    
@@ -1290,7 +1290,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -1389,7 +1389,7 @@ h6:hover .anchor-link {
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="/category/machine-learning.html">Machine Learning (7)</a></li>
+							<li><a href="/category/machine-learning.html">Machine Learning (9)</a></li>
 							<li><a href="/category/statistics.html">Statistics (2)</a></li>
 						</ul>
 					</div>
