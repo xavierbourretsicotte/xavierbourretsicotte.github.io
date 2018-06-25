@@ -53,7 +53,7 @@ GOOGLE_ANALYTICS = 'UA-119498351-1'
 
 DISQUS_SITENAME = 'xavierbourretsicotte-github-io'
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 25
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = False
