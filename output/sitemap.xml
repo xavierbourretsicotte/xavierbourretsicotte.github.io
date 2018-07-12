@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/</loc>
-<lastmod>2018-06-25T12:12:36-00:00</lastmod>
+<lastmod>2018-07-12T10:50:43-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/archives.html</loc>
-<lastmod>2018-06-25T12:12:36-00:00</lastmod>
+<lastmod>2018-07-12T10:50:43-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/tags.html</loc>
-<lastmod>2018-06-25T12:12:36-00:00</lastmod>
+<lastmod>2018-07-12T10:50:43-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/categories.html</loc>
-<lastmod>2018-06-25T12:12:36-00:00</lastmod>
+<lastmod>2018-07-12T10:50:43-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,41 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>/pages/categories.html</loc>
 <lastmod>2018-05-23T10:00:00+02:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/AdaBoost.html</loc>
+<lastmod>2018-07-10T11:00:00+02:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/Tree_based_models.html</loc>
+<lastmod>2018-07-01T11:00:00+02:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/Kernel_feature_map.html</loc>
+<lastmod>2018-06-28T11:00:00+02:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/SVM_implementation.html</loc>
+<lastmod>2018-06-26T11:00:00+02:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/SVM_by_hand.html</loc>
+<lastmod>2018-06-25T11:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -152,7 +187,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/category/machine-learning.html</loc>
-<lastmod>2018-06-22T13:00:00+00:09</lastmod>
+<lastmod>2018-07-10T11:00:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -194,7 +229,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/author/xavier-bourret-sicotte.html</loc>
-<lastmod>2018-06-22T13:00:00+00:09</lastmod>
+<lastmod>2018-07-10T11:00:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
